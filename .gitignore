@@ -1,0 +1,22 @@
+# Secrets / environment files
+.env
+*.env
+*.secret
+*.key
+*.pem
+
+# Large system images
+*.iso
+*.img
+*.qcow2
+*.vdi
+*.vmdk
+
+# Logs
+*.log
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
