@@ -27,7 +27,7 @@ Beim Aufschreiben merke ich besser, ob ich ein Thema wirklich verstanden habe.
 
 Wenn ich einen Schritt erklären kann, verstehe ich ihn meistens auch besser.
 
-Deshalb ist GitHub für mich nicht nur zum Hochladen von Code da, sondern auch als Lern- und Dokumentationsplattform.
+Deshalb ist GitHub für mich nicht nur zum Hochladen von Code da, sondern auch als Lern und Dokumentationsplattform.
 
 ---
 
