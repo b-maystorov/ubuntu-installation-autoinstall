@@ -1,0 +1,59 @@
+# Ubuntu Autoinstall Beispiel
+# Diese Datei ist ein Beispiel für eine automatische Ubuntu-Server-Installation.
+# Sie ist NICHT direkt für echte Systeme gedacht, weil Passwort und SSH-Key ersetzt werden müssen.
+
+autoinstall:
+  version: 1
+
+  # Sprache und Tastatur
+  locale: de_DE.UTF-8
+  keyboard:
+    layout: de
+
+  # Zeitzone
+  timezone: Europe/Berlin
+
+  # Benutzer, Hostname und Passwort
+  # WICHTIG:
+  # Das Passwort muss normalerweise als Hash eingetragen werden.
+  # Niemals echte Passwörter im Klartext auf GitHub speichern.
+  identity:
+    hostname: ubuntu-lab
+    username: ubuntuadmin
+    password: "$6$REPLACE_WITH_REAL_HASHED_PASSWORD"
+
+  # SSH installieren
+  # So kann der Server nach der Installation remote verwaltet werden.
+  ssh:
+    install-server: true
+    allow-pw: true
+    authorized-keys:
+      - "ssh-ed25519 REPLACE_WITH_PUBLIC_SSH_KEY user@example"
+
+  # Einfache automatische Festplattenaufteilung
+  # direct = einfache direkte Installation ohne komplexes LVM-Beispiel
+  storage:
+    layout:
+      name: direct
+
+  # Pakete, die direkt mitinstalliert werden sollen
+  packages:
+    - openssh-server
+    - curl
+    - wget
+    - git
+    - vim
+    - htop
+    - net-tools
+
+  # Sicherheitsupdates während der Installation installieren
+  updates: security
+
+  # Befehle am Ende der Installation
+  # Diese laufen kurz vor dem Neustart.
+  late-commands:
+    - curtin in-target --target=/target -- systemctl enable ssh
+    - curtin in-target --target=/target -- apt-get update
+
+  # Nach der Installation automatisch neu starten
+  shutdown: reboot
