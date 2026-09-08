@@ -1,110 +1,122 @@
-# Lessons Learned
+## Was ich durch das Projekt gelernt habe
 
-In diesem Dokument sammle ich die wichtigsten Dinge, die ich bei der Ubuntu-Installation und der Dokumentation gelernt habe.
+Durch das Projekt habe ich nicht nur eine Ubuntu-Installation durchgeführt, sondern auch besser verstanden, welche Bereiche bei der Bereitstellung eines Linux-Systems zusammenspielen.
 
----
+Dazu gehören unter anderem:
 
-## Installation ist mehr als nur “Weiter klicken”
+* Installation und Grundkonfiguration von Ubuntu
+* Netzwerk und IP-Konfiguration
+* SSH für die entfernte Administration
+* Partitionierung und Storage-Grundlagen
+* Paketverwaltung mit APT
+* Automatisierung mit Bash
+* automatisierte Installation mit Ubuntu Autoinstall
+* Konfiguration mit YAML
+* Dokumentation mit Markdown
+* Versionsverwaltung mit Git und GitHub
 
-Bei einer Ubuntu-Installation geht es nicht nur darum, das System irgendwie zum Laufen zu bringen.
-
-Wichtige Entscheidungen sind zum Beispiel:
-
-- Welche Ubuntu-Version nutze ich?
-- Installiere ich Desktop oder Server?
-- Wie wird die Festplatte aufgeteilt?
-- Wie bekommt das System Netzwerk?
-- Soll SSH direkt genutzt werden?
-- Welche Benutzer werden angelegt?
-
-Diese Punkte wirken am Anfang klein, sind aber später wichtig für ein sauberes System.
+Besonders wichtig war für mich zu verstehen, dass viele Aufgaben, die man zuerst manuell ausführt, später automatisiert werden können.
 
 ---
 
-## Dokumentation hilft beim Verstehen
+## Von manueller Installation zu Automatisierung
 
-Beim Aufschreiben merke ich besser, ob ich ein Thema wirklich verstanden habe.
+Am Anfang des Projekts lag der Fokus auf der normalen Ubuntu-Installation.
 
-Wenn ich einen Schritt erklären kann, verstehe ich ihn meistens auch besser.
+Später wurde die Installation durch eine Autoinstall-Konfiguration ergänzt.
 
-Deshalb ist GitHub für mich nicht nur zum Hochladen von Code da, sondern auch als Lern und Dokumentationsplattform.
+Dadurch konnte ich den Unterschied zwischen manueller und automatisierter Bereitstellung besser verstehen.
+
+Zusätzlich wurde ein Postinstall-Skript erstellt, das nach der Installation weitere Aufgaben übernimmt.
+
+Dadurch ergibt sich ungefähr dieser Ablauf:
+
+```text
+Ubuntu-ISO
+    ↓
+Autoinstall-Konfiguration
+    ↓
+Ubuntu wird installiert
+    ↓
+Postinstall-Skript
+    ↓
+Pakete, SSH und Systeminformationen
+    ↓
+Fertig vorbereitetes System
+```
 
 ---
 
-## Netzwerk ist ein wichtiges Grundthema
+## Automatisierung spart Arbeit
 
-Ohne Netzwerk funktionieren viele Dinge nicht richtig.
+Ein wichtiger Punkt aus dem Projekt war zu verstehen, warum Administratoren Skripte und Konfigurationsdateien verwenden.
+
+Bei einem einzelnen System kann man viele Schritte noch manuell durchführen.
+
+Wenn aber mehrere Systeme eingerichtet werden sollen, müsste man dieselben Schritte immer wieder durchführen.
+
+Eine automatisierte Installation sorgt dafür, dass die Systeme möglichst gleich eingerichtet werden.
+
+Das spart Zeit und reduziert Fehler.
+
+---
+
+## Sicherheit bei Automatisierung
+
+Bei automatisierten Installationen können sensible Daten vorkommen.
 
 Zum Beispiel:
 
-- Updates
-- Paketinstallation
-- SSH
-- Serverdienste
-- Verbindung zu anderen Geräten
+* Passwörter
+* SSH-Keys
+* Tokens
+* interne Serverdaten
 
-Ich habe gelernt, dass DHCP für den Anfang einfach ist, aber feste IP-Adressen bei Servern oft sinnvoller sind.
+Deshalb dürfen solche Daten nicht einfach in ein öffentliches GitHub-Repository hochgeladen werden.
 
----
-
-## Partitionierung sollte man nicht ignorieren
-
-Am Anfang ist automatische Partitionierung meistens okay.
-
-Trotzdem sollte man die wichtigsten Begriffe kennen:
-
-- EFI
-- Root `/`
-- Swap
-- `/home`
-- LVM
-
-Gerade bei Servern ist es wichtig zu wissen, wie Speicher aufgebaut ist.
+In diesem Projekt werden deshalb nur Platzhalter und Beispielwerte verwendet.
 
 ---
 
-## SSH ist wichtig für Server
+## Fehleranalyse gehört dazu
 
-SSH ist wichtig, weil Server oft ohne Bildschirm und Tastatur verwaltet werden.
-
-Mit SSH kann man sich von einem anderen Rechner verbinden und den Server über die Konsole bedienen.
-
-Das ist ein typischer Teil von Systemadministration.
-
----
-
-## Fehler sind Teil des Lernprozesses
-
-Bei Installationen können viele kleine Probleme auftreten.
+Während einer Installation oder Konfiguration können Probleme auftreten.
 
 Zum Beispiel:
 
-- falscher Netzwerkmodus in der VM
-- keine IP-Adresse
-- falsches Tastaturlayout
-- SSH nicht aktiv
-- Bootprobleme
-- zu wenig RAM oder Speicher
+* keine Netzwerkverbindung
+* falsche IP-Konfiguration
+* SSH nicht erreichbar
+* Paketinstallation schlägt fehl
+* falsches Tastaturlayout
+* zu wenig Speicher oder RAM
+* Fehler in einer YAML-Datei
 
-Wichtig ist, die Fehler nicht nur zu beheben, sondern auch zu verstehen, warum sie passiert sind.
+Ich habe gelernt, dass es wichtig ist, nicht nur eine Lösung zu finden, sondern auch die Ursache des Problems zu verstehen.
 
 ---
 
-## Was ich als Nächstes verbessern möchte
+## Mögliche spätere Erweiterungen
 
-Als Nächstes möchte ich dieses Projekt erweitern mit:
+Das Projekt ist in seinem aktuellen Umfang abgeschlossen.
 
-- mehr Screenshots
-- einer Beispiel-Konfiguration für Autoinstall
-- einem kleinen Post-Install-Skript
-- besserer Erklärung von LVM
-- Vergleich zwischen NAT und Bridge
-- Verbindung zum Home-Lab-Projekt
+Später könnte es trotzdem erweitert werden, zum Beispiel mit:
+
+* einer statischen Netzwerkkonfiguration
+* erweiterten Storage-Beispielen mit LVM
+* automatischer Ausführung des Postinstall-Skripts
+* mehreren Autoinstall-Profilen
+* Integration in ein größeres Home-Lab
+* automatischen Tests der Konfiguration
+
+Diese Punkte sind Erweiterungen und keine Voraussetzung für den aktuellen Projektabschluss.
 
 ---
 
 ## Fazit
 
-Dieses Projekt hilft mir, Ubuntu-Installation, Linux-Grundlagen und technische Dokumentation besser zu verstehen.
+Dieses Projekt hat mir geholfen, Ubuntu-Installation, Linux-Grundlagen und Automatisierung miteinander zu verbinden.
 
-Es ist ein guter erster Schritt, um später größere Themen wie Serverdienste, Virtualisierung, Docker und Home Lab sauber aufzubauen.
+Ich habe verstanden, wie aus einer normalen manuellen Installation Schritt für Schritt eine wiederholbare und teilweise automatisierte Bereitstellung werden kann.
+
+Das Projekt ist gleichzeitig eine Dokumentation meines Lernprozesses und ein praktisches Beispiel für grundlegende Aufgaben in der Linux-Systemadministration.
